@@ -1,0 +1,31 @@
+<%-include('./partials/header')%>
+<%-include('./partials/navbar')%>
+<div class="container_home ">
+
+    <div class="row d-flex justify-content-center text-light pt-5 " style="width: 100vw;">
+        <% myhome.forEach(hm=>{%>
+        <div class="col-md-4  d-flex   flex-column justify-content-start align-items-center my-2 me-1 p-1 overflow-auto  myDiv "
+            style="background-image: url('<%=hm.photo%>');height:400px;width:397px;background-size: cover;background-position: center;"
+            data-id="<%=hm._id%>">
+            <div class="d-flex justify-content-evenly w-100">
+                <p class="author">autor: <%=hm.name%></p>
+                <p>data: <%=hm.createdAt.toLocaleDateString()%></p>
+            </div>
+            <h1 class="fw-bold text-center"><%=hm.title%></h1>
+            <div class="action">
+                <a href="/editOne/<%=hm._id%>" class="btn btn-primary btn-sm">Edit</a>
+                <a href="/delete/<%=hm._id%>" class="btn btn-danger btn-sm mx-2">Delete</a>
+            </div>
+        </div>
+        <%})%>
+    </div>
+
+</div>
+<script>
+    input = document.getElementById("search");
+    btn = document.getElementById("searchBtn");
+    input.style.display = "none";
+    btn.style.display = "none";
+</script>
+
+<%-include('./partials/footer')%>

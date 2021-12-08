@@ -1,0 +1,14 @@
+<%-include('./partials/header')%>
+<%-include('./partials/navbar')%>
+<div class="container_particular d-flex flex-column justify-content-center align-items-center   ">
+    <h1 class="pt-4 text-center"><%=blog.title%></h1>
+    <div class="px-4 "><img src="<%=blog.photo%>" width="100%" alt=""></div>
+    <div class="p-5 fs-5 " id="text"><%=blog.text%></div>
+</div>
+<script>
+     input = document.getElementById("search");
+    btn=document.getElementById("searchBtn");
+    input.style.display = "none";
+    btn.style.display = "none";
+  </script>
+<%-include('./partials/footer')%>

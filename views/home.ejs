@@ -1,0 +1,56 @@
+<%-include('./partials/header')%>
+<%-include('./partials/navbar')%>
+<div class="container_home ">
+    <div class="top_baner "><img
+            src="https://www.sedco.co/sites/default/files/styles/de2e_4_1_sm/public/images/2020-02/blogs_banner_-_sedco_1.png"
+            alt="" width="">
+        <div class="h1-home">
+            <% if (typeof message !== "undefined") { %>
+            <p class="bg-danger text-light p-1 rounded"><%= message %></p>
+            <% } %>
+            <h1>B L O G S</h1>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center text-light " style="width: 100vw;">
+        <% myhome.forEach(hm=>{%>
+        <div class="col-md-4  d-flex   flex-column justify-content-start align-items-center my-2 me-1 p-1 overflow-auto  myDiv "
+            style="background-image: url('<%=hm.photo%>');height:400px;width:397px;background-size: cover;background-position: center;"
+            data-id="<%=hm._id%>">
+            <div class="d-flex justify-content-evenly w-100">
+                <p class="author">autor: <%=hm.name%></p>
+                <p>data: <%=hm.updatedAt.toLocaleDateString()%></p>
+            </div>
+            <h1 class="fw-bold text-center title"><%=hm.title%></h1>
+        </div>
+        <%})%>
+    </div>
+
+</div>
+<script>
+    const myDiv = document.querySelectorAll('.myDiv');
+    myDiv.forEach(div => {
+        div.addEventListener('click', () => {
+            const id = div.getAttribute('data-id');
+            window.location.href = `/home/${id}`;
+        })
+    })
+
+    function myFunction() {
+
+        const input = document.querySelector("#search");
+        let filter = input.value.toUpperCase();
+        let names = document.querySelectorAll(".title");
+        const btn = document.querySelector('#searchBtn')
+        names.forEach((name, index) => {
+            if (name) {
+                const txtValue = name.innerHTML;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    myDiv[index].classList.add("d-block");
+                } else {
+                    myDiv[index].classList.add("d-none");
+                }
+            }
+        })
+    }
+</script>
+<%-include('./partials/footer')%>

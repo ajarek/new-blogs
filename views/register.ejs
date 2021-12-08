@@ -1,0 +1,38 @@
+<%-include('./partials/header')%>
+<%-include('./partials/navbar')%>
+<%let error%>
+<div class="container d-flex flex-column justify-content-center align-items-center ">
+  <h1 class="text-center">Register</h1>
+  <% if (typeof errorMessage !== "undefined") { %>
+  <p class="bg-danger text-light p-1 rounded"><%= errorMessage %></p>
+  <% } %>
+
+  <form action="/register/" method="post" class="row w-75">
+    <div class="mb-3 ">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control " id="name" name="name" placeholder="James" required>
+    </div>
+    <div class="mb-3 ">
+      <label for="email" class="form-label">Email address</label>
+      <input type="email" class="form-control " id="email" name="email" placeholder="name@example.com" required>
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" id="password" name="password" required>
+    </div>
+    <div class="mb-3">
+      <label for="repeat" class="form-label">Repeat password</label>
+      <input type="password" class="form-control" id="repeat" name="repeat" required>
+    </div>
+    <div class="mb-3">
+      <button type="submit" class="btn color text-light mb-3">Login</button>
+    </div>
+  </form>
+</div>
+<script>
+  input = document.getElementById("search");
+  btn = document.getElementById("searchBtn");
+  input.style.display = "none";
+  btn.style.display = "none";
+</script>
+<%-include('./partials/footer')%>
